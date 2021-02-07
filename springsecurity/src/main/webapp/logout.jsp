@@ -1,0 +1,6 @@
+<html lang="en"><head><style id="/index.css:-css" type="text/css">
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJpbmRleC5jc3MifQ== */</style></head><body>
+    <div id="container" style="padding: 24px"><div class="ant-result ant-result-info"><div class="ant-result-icon"><span role="img" aria-label="exclamation-circle" class="anticon anticon-exclamation-circle"><svg viewBox="64 64 896 896" focusable="false" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm-32 232c0-4.4 3.6-8 8-8h48c4.4 0 8 3.6 8 8v272c0 4.4-3.6 8-8 8h-48c-4.4 0-8-3.6-8-8V296zm32 440a48.01 48.01 0 010-96 48.01 48.01 0 010 96z"></path></svg></span></div><div class="ant-result-title">Logout success!</div><div class="ant-result-extra"><button type="button" class="ant-btn ant-btn-primary" onClick = "location.href = '/login;'"><span>Back to home</span></button></div></div></div>
+
+  
+</body></html>
