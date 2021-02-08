@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.merchant;
 
 import java.util.List;
 

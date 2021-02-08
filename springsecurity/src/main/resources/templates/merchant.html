@@ -1,11 +1,39 @@
-<html>
-
-<head>
-	<title>Merchant</title>
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head lang="en">
+    <meta charset="ISO-8859-1"/>
+    <title></title>
+    <!--<link rel="stylesheet" href="/main.css" />-->
 </head>
-
 <body>
-	Merchant !
-</body>
+    <div sec:authorize="isAuthenticated()">
+        Welcome <b><span sec:authentication="name">username</span></b>
+        &nbsp;
+        <span sec:authentication="principal.authorities">Roles</span>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <td>Merchant ID</td>
+                <td>Merchant Code</td>
+                <td>Merchant Name</td>
+                <td>Description</td>
+            </tr>
+            <tr th:each="merchant : ${listMerchants}">
+                <td th:text="${merchant.id}">Merchant ID</td>
+                <td th:text="${merchant.merchant_code}">Merchant Code</td>
+                <td th:text="${merchant.merchant_name}">Merchant Name</td>
+                <td th:text="${merchant.description}">Description</td>
+            </tr>
+        </thead>
+    </table>
+    <a href="/logout">Logout</a>
+    
+    <!-- ReactJS + Spring Data REST
+    <div id="react"></div>
+    <script src="built/bundle.js"></script>-->
 
+</body>
 </html>

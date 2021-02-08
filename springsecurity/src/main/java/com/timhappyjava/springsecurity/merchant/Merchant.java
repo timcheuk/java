@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.merchant;
 
 import java.util.Objects;
 
@@ -54,19 +54,19 @@ public class Merchant {
 		this.id = id;
 	}
 
-	public String getmerchant_code() {
+	public String getMerchant_code() {
 		return merchant_code;
 	}
 
-	public void setmerchant_code(String merchant_code) {
+	public void setMerchant_code(String merchant_code) {
 		this.merchant_code = merchant_code;
 	}
 
-	public String getmerchant_name() {
+	public String getMerchant_name() {
 		return merchant_name;
 	}
 
-	public void setmerchant_name(String merchant_name) {
+	public void setMerchant_name(String merchant_name) {
 		this.merchant_name = merchant_name;
 	}
 

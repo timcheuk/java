@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.merchant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +22,7 @@ public class MerchantService {
 	public void addMerchant(Merchant merchant) {
 		merchantRepository.save(merchant);
 	}
+
 	
 
 }

@@ -1,13 +1,15 @@
 package com.timhappyjava.springsecurity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.timhappyjava.springsecurity.merchant.Merchant;
+import com.timhappyjava.springsecurity.merchant.MerchantService;
 
 @Controller
 public class HomeController {
@@ -20,16 +22,17 @@ public class HomeController {
 		return "home.html";
 	}
 	
-	@RequestMapping("/list")
-	public List<Merchant> getAllMerchants() {
-		List<Merchant> listMerchants = merchantService.findAllMerchants();
-		return listMerchants;
-		//return "list.html";
+	@RequestMapping(value = "/merchant", method = RequestMethod.GET)
+	public String listMerchants(Model model) {
+		model.addAttribute("listMerchants", merchantService.findAllMerchants());
+	    return "merchant.html";
 	}
 	
-	@RequestMapping("/merchant")
-	public String merchant() {
-		return "merchant.html";
+	@RequestMapping(value = "/merchant", method = RequestMethod.POST)
+	public String updateMerchant(@ModelAttribute("merchant") Merchant merchant) {
+		merchantService.addMerchant(merchant);
+		
+	    return "redirect:/merchant";
 	}
 	
 	@RequestMapping("/login")

@@ -3,6 +3,7 @@ package com.timhappyjava.springsecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -47,8 +48,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/login").permitAll()
-			.antMatchers("/list").hasAuthority("ADMIN")
-			.antMatchers("/merchant").hasAnyAuthority("ADMIN","EDITOR")
+			.antMatchers(HttpMethod.DELETE, "/merchant").hasAuthority("ADMIN")
+			.antMatchers(HttpMethod.POST, "/merchant").hasAnyAuthority("ADMIN","EDITOR")
+			.antMatchers(HttpMethod.GET, "/merchant").hasAnyAuthority("ADMIN","EDITOR","USER")
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
