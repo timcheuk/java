@@ -1,0 +1,21 @@
+<html>
+
+  <head>
+    <title>Good Thymes Virtual Grocery</title>
+  </head>
+
+  <body>
+  
+  <p>Welcome </p>
+    <div sec:authorize="isAuthenticated()">
+        <b><span sec:authentication="name">username</span></b>
+        &nbsp;
+        <span sec:authentication="principal.authorities">Roles</span>
+    </div>
+
+  <a sec:authorize="hasAuthority('ADMIN')" href = "/list"> List </a><br/>
+	<a href="/logout">Logout</a>
+  
+  </body>
+
+</html>
