@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `springsecurity` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `springsecurity`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: springsecurity
@@ -28,7 +26,7 @@ CREATE TABLE `user_role` (
   `user_id` int DEFAULT NULL,
   `role_id` int DEFAULT NULL,
   KEY `role_fk_idx` (`role_id`),
-  KEY `user_fk_idx` (`user_id`),
+  KEY `user_fk` (`user_id`),
   CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`),
   CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -40,7 +38,7 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (1,1),(2,3),(2,2);
+INSERT INTO `user_role` VALUES (2,3),(3,1),(4,2),(2,1),(4,3);
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-08 17:53:09
+-- Dump completed on 2021-02-09 17:49:34

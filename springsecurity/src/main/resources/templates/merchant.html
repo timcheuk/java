@@ -8,27 +8,40 @@
     <!--<link rel="stylesheet" href="/main.css" />-->
 </head>
 <body>
-    <div sec:authorize="isAuthenticated()">
+    <div align = "center" sec:authorize="isAuthenticated()">
         Welcome <b><span sec:authentication="name">username</span></b>
         &nbsp;
         <span sec:authentication="principal.authorities">Roles</span>
-    </div>
-    <table>
+        <h1> Merchant Listing</h1>
+    <a href="new_merchant" sec:authorize="hasAuthority('ADMIN')">Create New Merchant</a>
+    <br/>
+    <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <td>Merchant ID</td>
-                <td>Merchant Code</td>
-                <td>Merchant Name</td>
-                <td>Description</td>
+                <th>Merchant ID</th>
+                <th>Merchant Code</th>
+                <th>Merchant Name</th>
+                <th>Description</th>
+                <th sec:authorize="hasAnyAuthority('ADMIN','EDITOR')" >Actions</th>
             </tr>
             <tr th:each="merchant : ${listMerchants}">
                 <td th:text="${merchant.id}">Merchant ID</td>
                 <td th:text="${merchant.merchant_code}">Merchant Code</td>
                 <td th:text="${merchant.merchant_name}">Merchant Name</td>
                 <td th:text="${merchant.description}">Description</td>
+                <td sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+                	<a th:href="@{'/edit_merchant/'+ ${merchant.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;&nbsp;
+                	<!--  <a th:href="@{'/merchant/'+ ${merchant.id}}">Delete</a> -->
+                	<form action="#" th:action="@{/delete_merchant/} + ${merchant.id}" method="post">
+                	<!--  <input name="_method" value="DELETE" type="hidden" /> -->
+                    <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+               		</form>
+                </td>
             </tr>
         </thead>
     </table>
+    </div>
     <a href="/logout">Logout</a>
     
     <!-- ReactJS + Spring Data REST

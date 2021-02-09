@@ -21,7 +21,7 @@ public class Merchant {
 	private String merchant_name;
 	private String description;
 
-	private Merchant() {}
+	public Merchant() {}
 
 	public Merchant(String merchant_code, String merchant_name, String description) {
 		this.merchant_code = merchant_code;

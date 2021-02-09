@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `springsecurity` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `springsecurity`;
 -- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
 --
 -- Host: localhost    Database: springsecurity
@@ -28,9 +26,9 @@ CREATE TABLE `user` (
   `user_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `enabled` varchar(45) NOT NULL DEFAULT '0',
+  `enabled` tinyint NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +37,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'timcheuk','$2a$10$dVFCTDiSEXdmB5A1vBgSQeeKQ3S4OTSS2WQOlQ.CAcpxyXbB7AjVu','1'),(2,'tim123','$2a$10$dIKAuVsMTEYB3k7bz54lj.9.AjjNN4BrZ6I9AjxVEiZPH0UaxgDJa','1');
+INSERT INTO `user` VALUES (1,'Spiderman','web',0),(2,'Superman','$2y$18$WdHxODInKYcvKmOyy2VUCOnZ0y/ZwyRGgyIBQO0rY8bIZ6SfF7mCe',1),(3,'timcheuk','$2y$10$kWWacx/ROdD/h48GxdOTiettTvuSg1FM22RS71wMk6Gv.n4hbF3se',1),(4,'tim123','$2a$10$7tcYFewOUVOKRuOun9Soe.RSl3ZouoZv4Z19bhNibj0LDvlrArHEG',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-08 17:53:08
+-- Dump completed on 2021-02-09 17:49:34

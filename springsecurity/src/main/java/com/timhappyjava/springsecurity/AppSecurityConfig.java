@@ -48,7 +48,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers("/login").permitAll()
-			.antMatchers(HttpMethod.DELETE, "/merchant").hasAuthority("ADMIN")
+			.antMatchers("/delete_merchant/**","/new_merchant").hasAuthority("ADMIN")
+			.antMatchers("/edit_merchant/**").hasAnyAuthority("ADMIN","EDITOR")
 			.antMatchers(HttpMethod.POST, "/merchant").hasAnyAuthority("ADMIN","EDITOR")
 			.antMatchers(HttpMethod.GET, "/merchant").hasAnyAuthority("ADMIN","EDITOR","USER")
 			.anyRequest().authenticated()
@@ -63,7 +64,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/logout-success").permitAll()
 			.and()
-			.exceptionHandling().accessDeniedPage("/403");
+			.exceptionHandling().accessDeniedPage("/deny");
 	}
 	
 	
