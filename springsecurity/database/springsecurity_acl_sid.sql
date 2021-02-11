@@ -16,30 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_role`
+-- Table structure for table `acl_sid`
 --
 
-DROP TABLE IF EXISTS `user_role`;
+DROP TABLE IF EXISTS `acl_sid`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_role` (
-  `user_id` int DEFAULT NULL,
-  `role_id` int DEFAULT NULL,
-  KEY `role_fk_idx` (`role_id`),
-  KEY `user_fk` (`user_id`),
-  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `acl_sid` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `principal` tinyint(1) NOT NULL,
+  `sid` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_acl_sid` (`sid`,`principal`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data for table `acl_sid`
 --
 
-LOCK TABLES `user_role` WRITE;
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (2,3),(3,1),(4,2),(2,1),(4,3);
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+LOCK TABLES `acl_sid` WRITE;
+/*!40000 ALTER TABLE `acl_sid` DISABLE KEYS */;
+INSERT INTO `acl_sid` VALUES (1,0,'ADMIN'),(3,0,'EDITOR'),(2,0,'USER');
+/*!40000 ALTER TABLE `acl_sid` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

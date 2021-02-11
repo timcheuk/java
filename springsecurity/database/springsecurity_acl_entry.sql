@@ -16,30 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_role`
+-- Table structure for table `acl_entry`
 --
 
-DROP TABLE IF EXISTS `user_role`;
+DROP TABLE IF EXISTS `acl_entry`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_role` (
-  `user_id` int DEFAULT NULL,
-  `role_id` int DEFAULT NULL,
-  KEY `role_fk_idx` (`role_id`),
-  KEY `user_fk` (`user_id`),
-  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `acl_entry` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `acl_object_identity` bigint unsigned NOT NULL,
+  `ace_order` int NOT NULL,
+  `sid` bigint unsigned NOT NULL,
+  `mask` int unsigned NOT NULL,
+  `granting` tinyint(1) NOT NULL,
+  `audit_success` tinyint(1) NOT NULL,
+  `audit_failure` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_acl_entry` (`acl_object_identity`,`ace_order`),
+  KEY `fk_acl_entry_acl` (`sid`),
+  CONSTRAINT `fk_acl_entry_acl` FOREIGN KEY (`sid`) REFERENCES `acl_sid` (`id`),
+  CONSTRAINT `fk_acl_entry_object` FOREIGN KEY (`acl_object_identity`) REFERENCES `acl_object_identity` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data for table `acl_entry`
 --
 
-LOCK TABLES `user_role` WRITE;
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (2,3),(3,1),(4,2),(2,1),(4,3);
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+LOCK TABLES `acl_entry` WRITE;
+/*!40000 ALTER TABLE `acl_entry` DISABLE KEYS */;
+INSERT INTO `acl_entry` VALUES (1,1,1,1,1,1,1,1),(2,1,2,1,2,0,1,1),(3,2,1,1,1,1,1,1),(4,2,2,1,2,1,1,1),(5,3,1,1,1,1,1,1),(6,3,2,1,2,1,1,1);
+/*!40000 ALTER TABLE `acl_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-11  8:30:53
+-- Dump completed on 2021-02-11  8:30:52

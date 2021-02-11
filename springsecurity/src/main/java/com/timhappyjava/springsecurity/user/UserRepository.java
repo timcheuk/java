@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 //import org.springframework.data.jpa.repository.Query;

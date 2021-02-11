@@ -28,7 +28,7 @@ CREATE TABLE `merchant` (
   `merchant_name` varchar(45) NOT NULL,
   `description` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`merchant_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +37,7 @@ CREATE TABLE `merchant` (
 
 LOCK TABLES `merchant` WRITE;
 /*!40000 ALTER TABLE `merchant` DISABLE KEYS */;
-INSERT INTO `merchant` VALUES (1,'GDG','Golden Diamond Gaming2','A multiple provider game platform'),(2,'ADMIN','admin','root top control'),(13,'AAAA','aaaa company2222','wfaewfewfefw');
+INSERT INTO `merchant` VALUES (1,'GDG','Golden Diamond Gaming2','A multiple provider game platform'),(2,'ADMIN','admin','root top control'),(13,'AAAA','aaaa company222','wfaewfewfefw'),(14,'CompanyA','company A','first test a 1');
 /*!40000 ALTER TABLE `merchant` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-09 17:49:33
+-- Dump completed on 2021-02-11  8:30:52

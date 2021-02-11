@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

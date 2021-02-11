@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

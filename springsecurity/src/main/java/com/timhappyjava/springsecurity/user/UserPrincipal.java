@@ -1,4 +1,4 @@
-package com.timhappyjava.springsecurity;
+package com.timhappyjava.springsecurity.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
