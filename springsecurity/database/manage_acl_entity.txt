@@ -1,0 +1,7 @@
+insert into act_entry (acl_object_identity, ace_order,sid,mask) values
+
+(_poession_oid,0,_owner_sid,1) -- read
+(_poession_oid,1,_owner_sid,2) -- write
+(_poession_oid,2,_owner_sid,4) -- create
+(_poession_oid,3,_owner_sid,8) -- delete
+(_poession_oid,4,_owner_sid,16) -- admin

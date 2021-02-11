@@ -36,7 +36,7 @@ CREATE TABLE `acl_class` (
 
 LOCK TABLES `acl_class` WRITE;
 /*!40000 ALTER TABLE `acl_class` DISABLE KEYS */;
-INSERT INTO `acl_class` VALUES (1,'com.timhappyjava.springsecurity.merchant');
+INSERT INTO `acl_class` VALUES (1,'com.timhappyjava.springsecurity.merchant.Merchant');
 /*!40000 ALTER TABLE `acl_class` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-11  8:30:52
+-- Dump completed on 2021-02-11 14:02:57

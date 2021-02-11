@@ -11,9 +11,9 @@
     <div align = "center" sec:authorize="isAuthenticated()">
         Welcome <b><span sec:authentication="name">username</span></b>
         &nbsp;
-        <span sec:authentication="principal.authorities">Roles</span>
+        <span sec:authentication="principal.authorities">AUTHORITY</span>
         <h1> Merchant Listing</h1>
-    <a href="new_merchant" sec:authorize="hasAuthority('ADMIN')">Create New Merchant</a>
+    <a href="new_merchant" sec:authorize="hasAuthority('ADMIN_AUTHORITY')">Create New Merchant</a>
     <br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -22,18 +22,18 @@
                 <th>Merchant Code</th>
                 <th>Merchant Name</th>
                 <th>Description</th>
-                <th sec:authorize="hasAnyAuthority('ADMIN','EDITOR')" >Actions</th>
+                <th sec:authorize="hasAnyAuthority('ADMIN_AUTHORITY','WRITE_AUTHORITY')" >Actions</th>
             </tr>
             <tr th:each="merchant : ${listMerchants}">
                 <td th:text="${merchant.id}">Merchant ID</td>
                 <td th:text="${merchant.merchant_code}">Merchant Code</td>
                 <td th:text="${merchant.merchant_name}">Merchant Name</td>
                 <td th:text="${merchant.description}">Description</td>
-                <td sec:authorize="hasAnyAuthority('ADMIN','EDITOR')">
+                <td sec:authorize="hasAnyAuthority('ADMIN_AUTHORITY','WRITE_AUTHORITY')">
                 	<a th:href="@{'/edit_merchant/'+ ${merchant.id}}">Edit</a>
                 	&nbsp;&nbsp;&nbsp;&nbsp;
-                	<!--  <a th:href="@{'/merchant/'+ ${merchant.id}}">Delete</a> -->
-                	<form sec:authorize="hasAuthority('ADMIN')" action="#" th:action="@{/delete_merchant/} + ${merchant.id}" method="post">
+                	<!--  <a th:href="@{'/merchant/'+ ${merchant.id}}">Delete</a>  -->
+                	<form action="#" sec:authorize="hasAuthority('ADMIN_AUTHORITY')" th:action="@{/delete_merchant/} + ${merchant.id}" method="post">
                 	<!--  <input name="_method" value="DELETE" type="hidden" /> -->
                     <button class="btn btn-sm btn-danger" type="submit">Delete</button>
                		</form>

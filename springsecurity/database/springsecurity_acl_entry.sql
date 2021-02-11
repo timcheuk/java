@@ -36,7 +36,7 @@ CREATE TABLE `acl_entry` (
   KEY `fk_acl_entry_acl` (`sid`),
   CONSTRAINT `fk_acl_entry_acl` FOREIGN KEY (`sid`) REFERENCES `acl_sid` (`id`),
   CONSTRAINT `fk_acl_entry_object` FOREIGN KEY (`acl_object_identity`) REFERENCES `acl_object_identity` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `acl_entry` (
 
 LOCK TABLES `acl_entry` WRITE;
 /*!40000 ALTER TABLE `acl_entry` DISABLE KEYS */;
-INSERT INTO `acl_entry` VALUES (1,1,1,1,1,1,1,1),(2,1,2,1,2,0,1,1),(3,2,1,1,1,1,1,1),(4,2,2,1,2,1,1,1),(5,3,1,1,1,1,1,1),(6,3,2,1,2,1,1,1);
+INSERT INTO `acl_entry` VALUES (1,1,1,1,1,1,1,1),(2,1,2,1,2,1,1,1),(3,2,1,1,1,1,1,1),(4,2,2,1,2,1,1,1),(5,3,1,1,1,1,1,1),(6,3,2,1,2,1,1,1),(9,3,3,2,1,1,1,1),(10,3,4,2,2,0,1,1),(11,2,3,3,1,1,1,1),(12,2,4,3,2,0,1,1),(13,3,5,1,8,1,1,1),(14,3,6,1,4,1,1,1);
 /*!40000 ALTER TABLE `acl_entry` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-02-11  8:30:52
+-- Dump completed on 2021-02-11 14:02:58
