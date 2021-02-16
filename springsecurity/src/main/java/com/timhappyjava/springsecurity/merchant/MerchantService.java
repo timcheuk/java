@@ -43,16 +43,22 @@ public class MerchantService {
 		//return merchantRepository.findById(id).get();
 	}
 	
-	@PreAuthorize("hasPermission(#Merchant, 'WRITE')")
-	
-	public void saveMerchant(Merchant merchant) {
+	//check has Permission in this class PermissionEvaluator 
+	//@PreAuthorize("hasPermission(#this.id,'Merchant','WRITE')")
+	/*public void saveMerchant( Merchant merchant) {
 		merchantRepository.saveMerchantbyID(merchant.getId(),merchant.getMerchant_code(),merchant.getMerchant_name());
-	}
-	/*public void saveMerchant(Merchant merchant) {
-		merchantRepository.save(merchant);
 	}*/
+	@PreAuthorize("hasPermission(#merchant, 'WRITE')")
+	public void saveMerchant(Long id, Merchant merchant) {
+		merchantRepository.save(merchant);
+	}
+	
+	@PreAuthorize ("hasAuthority('ADMIN_AUTHORITY')")
+	public void createMerchant(Merchant merchant) {
+		merchantRepository.save(merchant);
+	}
 
-	//@PreAuthorize("hasPermission(#Merchant, 'DELETE')")
+	@PreAuthorize ("hasAuthority('ADMIN_AUTHORITY')")
 	public void deleteMerchant(Long id) {
 		merchantRepository.deleteById(id);
 	}

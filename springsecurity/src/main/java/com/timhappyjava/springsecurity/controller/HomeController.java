@@ -1,7 +1,6 @@
 package com.timhappyjava.springsecurity.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +12,26 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.timhappyjava.springsecurity.merchant.Merchant;
 import com.timhappyjava.springsecurity.merchant.MerchantService;
+import com.timhappyjava.springsecurity.player.PlayerService;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 @Controller
 public class HomeController {
 	
+	protected final Log log = LogFactory.getLog(getClass());
 	@Autowired
 	private MerchantService merchantService;
+	@Autowired
+	private PlayerService playerService;
 	
 	@RequestMapping(value = {"/home","/"})
 	public String home() {
 		return "home";
 	}
 	
-	
+	//Service to get all merchant in a list
 	@RequestMapping(value = "/merchant", method = RequestMethod.GET)
 	public String listMerchants(Model model) {
 		model.addAttribute("listMerchants", merchantService.findAllMerchants());
@@ -46,9 +52,14 @@ public class HomeController {
 		return "new_merchant";
 	}
 	
+	//edit merchant need to separate with create merchant ? 
 	@RequestMapping(value = "/merchant", method = RequestMethod.POST)
 	public String saveMerchant(@ModelAttribute("new_merchant") Merchant merchant) {
-		merchantService.saveMerchant(merchant);
+		
+		if (merchant.getId() == null) 
+			merchantService.createMerchant(merchant);
+		else 
+			merchantService.saveMerchant(merchant.getId(),merchant);
 		
 	    return "redirect:/merchant";
 	}
@@ -63,6 +74,13 @@ public class HomeController {
 		mav.addObject("edit_merchant",merchant);
 		
 		return mav;
+	}
+	
+	@RequestMapping(value = "/player", method = RequestMethod.GET)
+	public String listPlayers(Model model) {
+		log.info("player list function");
+		model.addAttribute("listPlayers", playerService.findAllPlayers());
+	    return "player";
 	}
 	
 	@RequestMapping("/login")

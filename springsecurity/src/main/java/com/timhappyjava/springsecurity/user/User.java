@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name="user")//no need to add this annotation if same name)
 public class User {
 	@Id
-	@Column(name="user_id") //can skip if column name same as parameter
+	@Column(name="id") //can skip if column name same as parameter
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String username;

@@ -18,30 +18,34 @@ USE `springsecurity`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_role`
+-- Table structure for table `player`
 --
 
-DROP TABLE IF EXISTS `user_role`;
+DROP TABLE IF EXISTS `player`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_role` (
-  `user_id` int DEFAULT NULL,
-  `role_id` int DEFAULT NULL,
-  KEY `role_fk_idx` (`role_id`),
-  KEY `user_fk` (`user_id`),
-  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `player` (
+  `player_id` int NOT NULL AUTO_INCREMENT,
+  `player_name` varchar(45) NOT NULL,
+  `currency_id` int NOT NULL,
+  `merchant_id` int NOT NULL,
+  `player_balance` double NOT NULL,
+  PRIMARY KEY (`player_id`),
+  KEY `currency_fk_idx` (`currency_id`),
+  KEY `merchant_fk_idx` (`merchant_id`),
+  CONSTRAINT `currency_fk` FOREIGN KEY (`currency_id`) REFERENCES `currency` (`currency_id`),
+  CONSTRAINT `merchant_fk` FOREIGN KEY (`merchant_id`) REFERENCES `merchant` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data for table `player`
 --
 
-LOCK TABLES `user_role` WRITE;
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (2,3),(3,1),(4,2),(2,1),(4,3);
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+LOCK TABLES `player` WRITE;
+/*!40000 ALTER TABLE `player` DISABLE KEYS */;
+INSERT INTO `player` VALUES (1,'gdg001',1,1,100),(2,'gdg002',2,1,500.12),(3,'gdg003',3,1,1000),(4,'gdg004',4,1,2000),(5,'admin001',1,2,200.01),(6,'admin002',4,2,5120.8),(7,'13_001',3,13,800),(8,'13_002',1,13,445);
+/*!40000 ALTER TABLE `player` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

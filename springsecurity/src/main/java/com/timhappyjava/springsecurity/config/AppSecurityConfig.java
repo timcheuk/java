@@ -52,6 +52,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/edit_merchant/**").hasAnyAuthority("ADMIN_AUTHORITY","WRITE_AUTHORITY")
 			.antMatchers(HttpMethod.POST, "/merchant").hasAnyAuthority("ADMIN_AUTHORITY","WRITE_AUTHORITY")
 			.antMatchers(HttpMethod.GET, "/merchant").hasAnyAuthority("ADMIN_AUTHORITY","WRITE_AUTHORITY","READ_AUTHORITY")
+			.antMatchers(HttpMethod.POST, "/player").hasAnyAuthority("ADMIN_AUTHORITY","WRITE_AUTHORITY")
+			.antMatchers(HttpMethod.GET, "/player").hasAnyAuthority("ADMIN_AUTHORITY","WRITE_AUTHORITY","READ_AUTHORITY")
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()

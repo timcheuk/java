@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
 import org.springframework.security.access.expression.method.MethodSecurityExpressionHandler;
-import org.springframework.security.acls.AclPermissionEvaluator;
+//import org.springframework.security.acls.AclPermissionEvaluator;
 import org.springframework.security.acls.domain.*;
 import org.springframework.security.acls.jdbc.BasicLookupStrategy;
 import org.springframework.security.acls.jdbc.JdbcMutableAclService;
@@ -21,7 +21,7 @@ import org.springframework.security.config.annotation.method.configuration.Globa
 import javax.sql.DataSource;
 
 @Configuration
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled=true)
 public class ProjectConfig extends GlobalMethodSecurityConfiguration {
 
     @Autowired
@@ -99,8 +99,14 @@ public class ProjectConfig extends GlobalMethodSecurityConfiguration {
     @Bean
     public MethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler() {
         var expressionHandler = new DefaultMethodSecurityExpressionHandler();
+        var MyAclPermissionEvaluator  = new MyAclPermissionEvaluator(aclService());
+        expressionHandler.setPermissionEvaluator(MyAclPermissionEvaluator);
+        return expressionHandler;
+    }
+    /*public MethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler() {
+        var expressionHandler = new DefaultMethodSecurityExpressionHandler();
         var permissionEvaluator  = new AclPermissionEvaluator(aclService());
         expressionHandler.setPermissionEvaluator(permissionEvaluator);
         return expressionHandler;
-    }
+    }*/
 }

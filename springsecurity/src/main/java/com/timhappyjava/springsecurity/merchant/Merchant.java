@@ -15,7 +15,7 @@ public class Merchant {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="merchant_id")
+	@Column(name="id")
 	private Long id;
 	private String merchant_code;
 	private String merchant_name;
@@ -44,14 +44,6 @@ public class Merchant {
 	public int hashCode() {
 
 		return Objects.hash(id, merchant_code, merchant_name, description);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getMerchant_code() {
@@ -86,5 +78,13 @@ public class Merchant {
 			", merchant_name='" + merchant_name + '\'' +
 			", description='" + description + '\'' +
 			'}';
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

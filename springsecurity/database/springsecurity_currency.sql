@@ -18,30 +18,27 @@ USE `springsecurity`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `user_role`
+-- Table structure for table `currency`
 --
 
-DROP TABLE IF EXISTS `user_role`;
+DROP TABLE IF EXISTS `currency`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user_role` (
-  `user_id` int DEFAULT NULL,
-  `role_id` int DEFAULT NULL,
-  KEY `role_fk_idx` (`role_id`),
-  KEY `user_fk` (`user_id`),
-  CONSTRAINT `role_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `currency` (
+  `currency_id` int NOT NULL AUTO_INCREMENT,
+  `currency_code` varchar(4) NOT NULL,
+  PRIMARY KEY (`currency_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data for table `currency`
 --
 
-LOCK TABLES `user_role` WRITE;
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (2,3),(3,1),(4,2),(2,1),(4,3);
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
+LOCK TABLES `currency` WRITE;
+/*!40000 ALTER TABLE `currency` DISABLE KEYS */;
+INSERT INTO `currency` VALUES (1,'CNY'),(2,'THB'),(3,'VND'),(4,'VND2');
+/*!40000 ALTER TABLE `currency` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -1,17 +1,16 @@
 package com.timhappyjava.springsecurity.merchant;
 
-import java.util.List;
-import java.util.Optional;
+//import java.util.List;
 
 //import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
+//import org.springframework.data.jpa.repository.Modifying;
+//import org.springframework.data.jpa.repository.Query;
 //import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PostFilter;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PostAuthorize;
+//import org.springframework.security.access.prepost.PostFilter;
+//import org.springframework.security.access.prepost.PreAuthorize;
 //import org.springframework.security.access.prepost.PreFilter;
 
 
@@ -30,8 +29,8 @@ public interface MerchantRepository extends JpaRepository<Merchant, Long> {
 	//@PreAuthorize("hasPermission(#Merchant, 'WRITE')")
     //public Merchant save(Merchant merchant);
 
-	@Query(value = "update m SET m.merchant_code= :merchant_code, m.merchant_name= :merchant_name WHERE m.merchant_id = :id",nativeQuery = true)
-	public void saveMerchantbyID(Long id, String merchant_code, String merchant_name);
+	//@Query(value = "update m SET m.merchant_code= :merchant_code, m.merchant_name= :merchant_name WHERE m.merchant_id = :id",nativeQuery = true)
+	//public void saveMerchantbyID(Long id, String merchant_code, String merchant_name);
     
     //@PreAuthorize("hasPermission(#Merchant, 'DELETE')")
 	//public void deleteById(Long id);

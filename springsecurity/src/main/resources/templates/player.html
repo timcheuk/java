@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head lang="en">
+    <meta charset="ISO-8859-1"/>
+    <title></title>
+    <!--<link rel="stylesheet" href="/main.css" />-->
+</head>
+<body>
+    <div align = "center" sec:authorize="isAuthenticated()">
+        Welcome <b><span sec:authentication="name">username</span></b>
+        &nbsp;
+        <span sec:authentication="principal.authorities">AUTHORITY</span>
+        <h1> Player Listing</h1>
+    <a href="new_player" sec:authorize="hasAuthority('ADMIN_AUTHORITY')">Create New Player</a>
+    <br/>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Player ID</th>
+				<th>Merchant Code</th>
+                <th>Player Name</th>
+                <th>Currency</th>
+                <th sec:authorize="hasAnyAuthority('ADMIN_AUTHORITY','WRITE_AUTHORITY')" >Actions</th>
+            </tr>
+            <tr th:each="player : ${listPlayers}">
+                <td th:text="${player.id}">player ID</td>
+                <td th:text="${player.player_merchant.getMerchant_code()}">Merchant Code</td>
+                <td th:text="${player.player_name}">player Name</td>
+                <td th:text="${player.player_currency.getCurrency_code()}">Currency</td>
+                <td sec:authorize="hasAnyAuthority('ADMIN_AUTHORITY','WRITE_AUTHORITY')">
+                	<a th:href="@{'/edit_player/'+ ${player.id}}">Edit</a>
+                	&nbsp;&nbsp;&nbsp;&nbsp;
+                	<!--  <a th:href="@{'/player/'+ ${player.id}}">Delete</a>  -->
+                	<form action="#" sec:authorize="hasAuthority('ADMIN_AUTHORITY')" th:action="@{/delete_player/} + ${player.id}" method="post">
+                	<!--  <input name="_method" value="DELETE" type="hidden" /> -->
+                    <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+               		</form>
+                </td>
+            </tr>
+        </thead>
+    </table>
+    </div>
+    <a href="/logout">Logout</a>
+    
+    <!-- ReactJS + Spring Data REST
+    <div id="react"></div>
+    <script src="built/bundle.js"></script>-->
+
+</body>
+</html>

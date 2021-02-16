@@ -2,7 +2,7 @@ package com.timhappyjava.springsecurity.user;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
+//import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -12,6 +12,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserPrincipal implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private User user;
 	
 	public UserPrincipal(User user) {
