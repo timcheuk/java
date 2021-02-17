@@ -1,5 +1,7 @@
 package com.timhappyjava.springsecurity.merchant;
 
+import java.util.Optional;
+
 //import java.util.List;
 
 //import java.util.List;
@@ -15,8 +17,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface MerchantRepository extends JpaRepository<Merchant, Long> {
+
 //public interface MerchantRepository extends CrudRepository<Merchant, Long> {
 	//check base class by Ctrl click on BasePermission
+
+	Optional<Merchant> findByMerchantcode(String code);
 	
 	/* move all check to service level in order to handle null return for optional object before Filter and Authorize*/
     //@PostFilter("hasPermission(filterObject, 'READ')")

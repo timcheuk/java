@@ -2,7 +2,6 @@ package com.timhappyjava.springsecurity.config;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -25,7 +24,6 @@ import org.springframework.security.acls.model.Permission;
 import org.springframework.security.acls.model.Sid;
 import org.springframework.security.acls.model.SidRetrievalStrategy;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 
 //public class MyPermissionEvaluator implements PermissionEvaluator { 
 public class MyAclPermissionEvaluator implements PermissionEvaluator{
@@ -54,6 +52,7 @@ public class MyAclPermissionEvaluator implements PermissionEvaluator{
 	@Override
 	public boolean hasPermission(Authentication authentication, Object domainObject, Object permission) {
 		if (domainObject == null) {
+			this.logger.info("null domainObject");
 			return false;
 		}
 		/*Due to lazy mode in jpa, the object identity changed to hibernate proxy. To turn the object from proxy object to real object
@@ -137,8 +136,6 @@ public class MyAclPermissionEvaluator implements PermissionEvaluator{
 	public void setPermissionFactory(PermissionFactory permissionFactory) {
 		this.permissionFactory = permissionFactory;
 	}
-
-
 
 	/*public boolean hasPermission(Authentication authentication,Object targetDomainObject, Object permission) {
 	      if ("user".equals(targetDomainObject)) {

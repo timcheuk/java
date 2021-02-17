@@ -29,7 +29,7 @@ public class MerchantService {
 	}
 	
 	@PostAuthorize("hasPermission(returnObject, 'READ')")
-	public Merchant findMerchantbyID(Long id) throws EntityNotFoundException{
+	public Merchant findMerchantByID(Long id) throws EntityNotFoundException{
 		//convert optional object to merchant and handle null.
 		 Optional<Merchant> merchant = merchantRepository.findById(id);
 
@@ -38,9 +38,18 @@ public class MerchantService {
 		else {
 			return merchant.get();
 		}
+	}
+	
+	@PostAuthorize("hasPermission(returnObject, 'READ')")
+	public Merchant findMerchantByCode(String code) throws EntityNotFoundException{
+		//convert optional object to merchant and handle null.
+		 Optional<Merchant> merchant = merchantRepository.findByMerchantcode(code);
 
-		//convert optional object to Merchant by get()
-		//return merchantRepository.findById(id).get();
+		if(merchant==null) 
+			throw new EntityNotFoundException("merchant with code '"+ code +"' not found.");
+		else {
+			return merchant.get();
+		}
 	}
 	
 	//check has Permission in this class PermissionEvaluator 

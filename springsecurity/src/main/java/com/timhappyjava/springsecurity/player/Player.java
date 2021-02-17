@@ -21,18 +21,24 @@ public class Player {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="player_id")
 	private Long id;
-	private String player_name;
+	private String playername;
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="currency_id")
-	private Currency player_currency;
+	private Currency playercurrency;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="merchant_id")
-	private Merchant player_merchant;
+	private Merchant playermerchant;
 
-	private double player_balance;
+	private double playerbalance;
 
 	public Player() {}
+
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", playername=" + playername + ", playercurrency=" + playercurrency
+				+ ", playermerchant=" + playermerchant + ", playerbalance=" + playerbalance + "]";
+	}
 
 	public Long getId() {
 		return id;
@@ -42,36 +48,36 @@ public class Player {
 		this.id = id;
 	}
 
-	public String getPlayer_name() {
-		return player_name;
+	public String getPlayername() {
+		return playername;
 	}
 
-	public void setPlayer_name(String player_name) {
-		this.player_name = player_name;
+	public void setPlayername(String playername) {
+		this.playername = playername;
 	}
 
-	public double getPlayer_balance() {
-		return player_balance;
+	public double getPlayerbalance() {
+		return playerbalance;
 	}
 
-	public void setPlayer_balance(double player_balance) {
-		this.player_balance = player_balance;
+	public void setPlayerbalance(double playerbalance) {
+		this.playerbalance = playerbalance;
 	}
 
-	public Currency getPlayer_currency() {
-		return player_currency;
+	public Currency getPlayercurrency() {
+		return playercurrency;
 	}
 
-	public void setPlayer_currency(Currency player_currency) {
-		this.player_currency = player_currency;
+	public void setPlayercurrency(Currency playercurrency) {
+		this.playercurrency = playercurrency;
 	}
 
-	public Merchant getPlayer_merchant() {
-		return player_merchant;
+	public Merchant getPlayermerchant() {
+		return playermerchant;
 	}
 
-	public void setPlayer_merchant(Merchant player_merchant) {
-		this.player_merchant = player_merchant;
+	public void setPlayermerchant(Merchant playermerchant) {
+		this.playermerchant = playermerchant;
 	}
 	
 	

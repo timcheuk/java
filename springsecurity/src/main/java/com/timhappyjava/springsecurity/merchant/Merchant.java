@@ -17,15 +17,17 @@ public class Merchant {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-	private String merchant_code;
-	private String merchant_name;
+	@Column(name="merchant_code")
+	private String merchantcode;
+	@Column(name="merchant_name")
+	private String merchantname;
 	private String description;
 
 	public Merchant() {}
 
-	public Merchant(String merchant_code, String merchant_name, String description) {
-		this.merchant_code = merchant_code;
-		this.merchant_name = merchant_name;
+	public Merchant(String merchantcode, String merchantname, String description) {
+		this.merchantcode = merchantcode;
+		this.merchantname = merchantname;
 		this.description = description;
 	}
 
@@ -35,31 +37,31 @@ public class Merchant {
 		if (o == null || getClass() != o.getClass()) return false;
 		Merchant Merchant = (Merchant) o;
 		return Objects.equals(id, Merchant.id) &&
-			Objects.equals(merchant_code, Merchant.merchant_code) &&
-			Objects.equals(merchant_name, Merchant.merchant_name) &&
+			Objects.equals(merchantcode, Merchant.merchantcode) &&
+			Objects.equals(merchantname, Merchant.merchantname) &&
 			Objects.equals(description, Merchant.description);
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, merchant_code, merchant_name, description);
+		return Objects.hash(id, merchantcode, merchantname, description);
 	}
 
-	public String getMerchant_code() {
-		return merchant_code;
+	public String getMerchantcode() {
+		return merchantcode;
 	}
 
-	public void setMerchant_code(String merchant_code) {
-		this.merchant_code = merchant_code;
+	public void setMerchantcode(String merchantcode) {
+		this.merchantcode = merchantcode;
 	}
 
-	public String getMerchant_name() {
-		return merchant_name;
+	public String getMerchantname() {
+		return merchantname;
 	}
 
-	public void setMerchant_name(String merchant_name) {
-		this.merchant_name = merchant_name;
+	public void setMerchantname(String merchantname) {
+		this.merchantname = merchantname;
 	}
 
 	public String getDescription() {
@@ -74,8 +76,8 @@ public class Merchant {
 	public String toString() {
 		return "Merchant{" +
 			"id=" + id +
-			", merchant_code='" + merchant_code + '\'' +
-			", merchant_name='" + merchant_name + '\'' +
+			", merchant_code='" + merchantcode + '\'' +
+			", merchant_name='" + merchantname + '\'' +
 			", description='" + description + '\'' +
 			'}';
 	}

@@ -36,8 +36,8 @@ public class merchantPermissiontest {
 	public void givenUsernametimcheuk_whenUpdateMerchantId1_thenFail(){
 	    Merchant merchant = new Merchant();
 	    merchant.setId((long)1);
-	    merchant.setMerchant_code("GDG2");
-	    merchant.setMerchant_name("Golden Diamond Gaming");
+	    merchant.setMerchantcode("GDG2");
+	    merchant.setMerchantname("Golden Diamond Gaming");
 	    merchantRepository.save(merchant);
 	}
 

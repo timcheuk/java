@@ -16,7 +16,8 @@ public class Currency {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="currency_id")
 	private Long currency_id;
-	private String currency_code;
+	@Column(name="currency_code")
+	private String currencycode;
 	
 	public Long getId() {
 		return currency_id;
@@ -24,10 +25,10 @@ public class Currency {
 	public void setId(Long id) {
 		this.currency_id = id;
 	}
-	public String getCurrency_code() {
-		return currency_code;
+	public String getCurrencycode() {
+		return currencycode;
 	}
-	public void setCurrency_code(String currency_code) {
-		this.currency_code = currency_code;
+	public void setCurrencycode(String currencycode) {
+		this.currencycode = currencycode;
 	}
 }

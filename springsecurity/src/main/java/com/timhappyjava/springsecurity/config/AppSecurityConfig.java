@@ -67,6 +67,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logoutSuccessUrl("/logout-success").permitAll()
 			.and()
 			.exceptionHandling().accessDeniedPage("/deny");
+		//.exceptionHandling().authenticationEntryPoint(new CustomEntryPoint());
 	}
 	
 	

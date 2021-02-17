@@ -14,6 +14,15 @@
         <span sec:authentication="principal.authorities">AUTHORITY</span>
         <h1> Player Listing</h1>
     <a href="new_player" sec:authorize="hasAuthority('ADMIN_AUTHORITY')">Create New Player</a>
+	<form action="#" th:action="@{/player/}" method="get">
+	<label>Player ID<input type="text" name=id id=id/></label>
+	<br/>
+	<label>Player Name<input type="text" name=name id=name/></label>
+	<br/>
+	<label>Merchant Code<input type="text" name=merchantname id=merchantname/></label>
+	<br/>
+    <button class="btn btn-sm btn-danger" type="submit">Search</button>
+	</form>
     <br/>
     <table border="1">
         <thead>
@@ -26,9 +35,9 @@
             </tr>
             <tr th:each="player : ${listPlayers}">
                 <td th:text="${player.id}">player ID</td>
-                <td th:text="${player.player_merchant.getMerchant_code()}">Merchant Code</td>
-                <td th:text="${player.player_name}">player Name</td>
-                <td th:text="${player.player_currency.getCurrency_code()}">Currency</td>
+                <td th:text="${player.playermerchant.getMerchantcode()}">Merchant Code</td>
+                <td th:text="${player.playername}">player Name</td>
+                <td th:text="${player.playercurrency.getCurrencycode()}">Currency</td>
                 <td sec:authorize="hasAnyAuthority('ADMIN_AUTHORITY','WRITE_AUTHORITY')">
                 	<a th:href="@{'/edit_player/'+ ${player.id}}">Edit</a>
                 	&nbsp;&nbsp;&nbsp;&nbsp;

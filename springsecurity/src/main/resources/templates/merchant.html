@@ -26,8 +26,8 @@
             </tr>
             <tr th:each="merchant : ${listMerchants}">
                 <td th:text="${merchant.id}">Merchant ID</td>
-                <td th:text="${merchant.merchant_code}">Merchant Code</td>
-                <td th:text="${merchant.merchant_name}">Merchant Name</td>
+                <td th:text="${merchant.merchantcode}">Merchant Code</td>
+                <td th:text="${merchant.merchantname}">Merchant Name</td>
                 <td th:text="${merchant.description}">Description</td>
                 <td sec:authorize="hasAnyAuthority('ADMIN_AUTHORITY','WRITE_AUTHORITY')">
                 	<a th:href="@{'/edit_merchant/'+ ${merchant.id}}">Edit</a>

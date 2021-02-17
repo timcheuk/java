@@ -22,7 +22,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled=true)
-public class ProjectConfig extends GlobalMethodSecurityConfiguration {
+public class GlobalMethodSecurityConfig extends GlobalMethodSecurityConfiguration {
 
     @Autowired
     private MethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler;
@@ -96,6 +96,7 @@ public class ProjectConfig extends GlobalMethodSecurityConfiguration {
         );
     }
 
+    // assign sign identify permission evaluator replace acl AclPermissionEvaluator
     @Bean
     public MethodSecurityExpressionHandler defaultMethodSecurityExpressionHandler() {
         var expressionHandler = new DefaultMethodSecurityExpressionHandler();
